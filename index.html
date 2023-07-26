@@ -4,19 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <script src="fetch.js" defer></script>
 </head>
 <body>
     <img src="#">
-    <script>
-        const img = document.querySelector('img');
-        const url = 'https://api.giphy.com/v1/gifs/translate?api_key=XepfqnskUF7KSsP4EbvIHHclEii9a2KB&s=cats';
-        fetch(url, {mode:'cors'})
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(response) {
-            img.src = response.data.images.original.url;
-        });
-    </script>
+    <input type="text" id="search">
+    <button>Get a new GIF :3</button>
 </body>
 </html>
