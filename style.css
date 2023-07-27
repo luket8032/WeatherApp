@@ -2,3 +2,36 @@
     padding: 0;
     margin: 0;
 }
+
+.error-container {
+    margin: auto;
+    width: fit-content;
+    text-align: center;
+}
+
+.forecast-container {
+    border: solid black 2px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    width: fit-content;
+}
+
+.forecast-container hr {
+    margin-bottom: 6px;
+}
+
+.search {
+    margin: auto;
+    margin-bottom: 15px;
+    width: fit-content;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
