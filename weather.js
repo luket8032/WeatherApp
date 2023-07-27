@@ -9,7 +9,7 @@ async function getForecast() {
     try {
         const forecast = await fetch(urlWithSearch, {mode:'cors'});
         const forecastData = await forecast.json();
-        createForecastElement(forecastData)
+        createForecastElement(forecastData);
     } catch (error) {
         showError(error);
     }
@@ -17,6 +17,7 @@ async function getForecast() {
 
 function createForecastElement(data) {
     container.innerHTML = ''
+
     const forecastContainer = document.createElement('div');
     const location = document.createElement('h1');
     const divider = document.createElement('hr');
@@ -26,14 +27,14 @@ function createForecastElement(data) {
     const conditionIcon = document.createElement('img');
 
     location.textContent = data.location.name;
-    tempF.textContent = `Fahrenheit: ${data.current.temp_f}`;
-    tempC.textContent = `Celcius: ${data.current.temp_c}`;
+    tempF.textContent = `Fahrenheit: ${data.current.temp_f} \u00B0`;
+    tempC.textContent = `Celcius: ${data.current.temp_c} \u00B0`;
     condition.textContent = `Condition: ${data.current.condition.text}`;
     conditionIcon.src = data.current.condition.icon;
 
     forecastContainer.className = 'forecast-container';
 
-    forecastContainer.append(location, divider, tempF, tempC, condition, conditionIcon)
+    forecastContainer.append(location, divider, tempF, tempC, condition, conditionIcon);
     container.append(forecastContainer);
 }
 
