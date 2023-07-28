@@ -37,7 +37,6 @@ function createForecastElementF(data) {
     conditionContainer.className = 'condition-container';
     tempContainer.className = 'temp-container';
     forecastContainer.className = 'forecast-container';
-    tempF.className = 'temp';
 
     conditionContainer.append(tempF, conditionIcon)
     tempContainer.append(conditionContainer, condition)
@@ -52,14 +51,33 @@ function createSecondaryDataF(data) {
     const humidityContainer = document.createElement('div');
     const uvContainer = document.createElement('div');
     const cloudinessContainer = document.createElement('div');
-    const pressureContainer = document.createElement('div');
+    const pressureContainer = document.createElement('div'); 
+    const wind = document.createElement('p');
+    const visibility = document.createElement('p');
+    const humidity = document.createElement('p');
+    const uv = document.createElement('p');
+    const cloudiness = document.createElement('p');
+    const pressure = document.createElement('p');
+
+    wind.textContent = `${data.current.wind_mph} mph`;
+    visibility.textContent = `${data.current.vis_miles} mi.`;
+    humidity.textContent = `${data.current.humidity} %`;
+    uv.textContent = data.current.uv;
+    cloudiness.textContent = `${data.current.cloud} %`;
+    pressure.textContent = `${data.current.pressure_in} in.`;
 
     windContainer.textContent = 'Wind MPH';
+    windContainer.append(wind);
     visibilityContainer.textContent = 'Visibility';
+    visibilityContainer.append(visibility);
     humidityContainer.textContent = 'Humidity';
+    humidityContainer.append(humidity);
     uvContainer.textContent = 'UV Index'
+    uvContainer.append(uv);
     cloudinessContainer.textContent = 'Cloudiness';
+    cloudinessContainer.append(cloudiness);
     pressureContainer.textContent = 'Pressure';
+    pressureContainer.append(pressure);
 
     secondaryData.className = 'secondary-data'
 
@@ -77,13 +95,14 @@ function createSecondaryDataF(data) {
 
 function showError(error) {
     container.innerHTML = '';
+    console.log(error)
 
     const errorContainer = document.createElement('div');
     const errorNotif = document.createElement('h1');
     const errorMsg = document.createElement('p');
 
     errorNotif.textContent = 'Uh oh, there was an error';
-    errorMsg.textContent = error;
+    errorMsg.textContent = 'No results found';
 
     errorContainer.className = 'error-container'
 
