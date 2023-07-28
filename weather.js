@@ -1,7 +1,7 @@
 const btn = document.querySelector('button');
 const searchBar = document.getElementById('search');
 const container = document.getElementById('container');
-const url = 'http://api.weatherapi.com/v1/current.json?key=e462c7619cbe421f908144015230606&q=';
+const url = 'http://api.weatherapi.com/v1/forecast.json?key=e462c7619cbe421f908144015230606&q=';
 
 async function getForecast() {
     let searchParams = searchBar.value;
@@ -20,21 +20,20 @@ function createForecastElement(data) {
 
     const forecastContainer = document.createElement('div');
     const location = document.createElement('h1');
-    const divider = document.createElement('hr');
+    const localtime = document.createElement('p');
     const tempF = document.createElement('p');
     const tempC = document.createElement('p');
     const condition = document.createElement('p');
-    const conditionIcon = document.createElement('img');
 
-    location.textContent = data.location.name;
-    tempF.textContent = `Fahrenheit: ${data.current.temp_f} \u00B0`;
-    tempC.textContent = `Celcius: ${data.current.temp_c} \u00B0`;
+    location.textContent = `${data.location.name}, ${data.location.country}`;
+    localtime.textContent = data.location.localtime;
+    tempF.textContent = `${data.current.temp_f} \u00B0F`;
+    tempC.textContent = `${data.current.temp_c} \u00B0C`;
     condition.textContent = `Condition: ${data.current.condition.text}`;
-    conditionIcon.src = data.current.condition.icon;
 
     forecastContainer.className = 'forecast-container';
 
-    forecastContainer.append(location, divider, tempF, tempC, condition, conditionIcon);
+    forecastContainer.append(location, localtime, tempF, tempC, condition);
     container.append(forecastContainer);
 }
 
