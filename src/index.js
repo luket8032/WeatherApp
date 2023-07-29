@@ -1,3 +1,5 @@
+import "./style.css";
+
 const btn = document.querySelector('button');
 const container = document.getElementById('container')
 const searchBar = document.getElementById('search');
