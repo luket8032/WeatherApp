@@ -80,6 +80,44 @@ const dom = (() => {
     
         return secondaryData
     }
+
+    function createThreeDayElementF(data) {
+        const threeDaysData = data.forecast.forecastday;
+        const threeDayContainer = document.createElement('div');
+        const threeDayWrapper = document.createElement('div');
+        const threeDayHeading = document.createElement('h1');
+
+        threeDaysData.forEach(day => {
+            const dayForecast = createDayElementF(day.date, day.day)
+            threeDayWrapper.append(dayForecast)
+        })
+
+        threeDayHeading.textContent = '3-Day Forecast'
+
+        threeDayWrapper.className = 'three-day-wrapper'
+
+        threeDayContainer.append(threeDayHeading, threeDayWrapper);
+        container.append(threeDayContainer);
+    }
+
+    function createDayElementF(date, dayData) {
+        const dayContainer = document.createElement('div');
+        const dayDate = document.createElement('h3');
+        const conditionText = document.createElement('p');
+        const conditionIcon = document.createElement('img');
+        const hiTemp = document.createElement('p');
+        const loTemp = document.createElement('p');
+
+        dayDate.textContent = date;
+        conditionText.textContent = dayData.condition.text;
+        conditionIcon.src = dayData.condition.icon;
+        loTemp.textContent = dayData.mintemp_f;
+        hiTemp.textContent = dayData.maxtemp_f;
+
+        dayContainer.append(dayDate, conditionText, conditionIcon, loTemp, hiTemp);
+        
+        return dayContainer
+    }
     
     function showError(error) {
         container.innerHTML = '';
@@ -98,7 +136,7 @@ const dom = (() => {
         container.append(errorContainer);
     }
 
-    return {createForecastElementF, showError}
+    return {createForecastElementF, createThreeDayElementF, showError}
 })();
 
 export { dom }

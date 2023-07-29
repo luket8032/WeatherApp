@@ -3,15 +3,16 @@ import { dom } from "./dom";
 
 const btn = document.querySelector('button');
 const searchBar = document.getElementById('search');
-const url = 'http://api.weatherapi.com/v1/forecast.json?key=e462c7619cbe421f908144015230606&q=';
 
 async function getForecast() {
-    let searchParams = searchBar.value;
-    let urlWithSearch = url + searchParams;
+    const searchParams = searchBar.value;
+    const url = `http://api.weatherapi.com/v1/forecast.json?key=e462c7619cbe421f908144015230606&q=${searchParams}&days=3`;
+
     try {
-        const forecast = await fetch(urlWithSearch, {mode:'cors'});
+        const forecast = await fetch(url, {mode:'cors'});
         const forecastData = await forecast.json();
         dom.createForecastElementF(forecastData);
+        dom.createThreeDayElementF(forecastData);
     } catch (error) {
         dom.showError(error);
     }

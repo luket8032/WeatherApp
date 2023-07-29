@@ -53,6 +53,7 @@ body {
 
 .forecast-container {
     display: flex;
+    justify-content: space-around;
     text-align: center;
 }
 
@@ -82,8 +83,8 @@ body {
 .temp-container {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     justify-content: center;
+    width: fit-content;
 }
 
 /* Nav Elements */
@@ -164,4 +165,10 @@ body {
 .title {
     margin-bottom: 15px;
     margin-top: 15px;
+}
+
+/* Three Day Forecast Elements */
+.three-day-wrapper {
+    display: flex;
+    justify-content: space-between;
 }
