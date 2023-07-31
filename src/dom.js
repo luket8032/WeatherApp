@@ -2,6 +2,7 @@
 
 const dom = (() => {
     const container = document.getElementById('container');
+    const loader = document.getElementById('loader');
 
     function createForecastElementF(data) {
         container.innerHTML = ''
@@ -136,7 +137,15 @@ const dom = (() => {
         container.append(errorContainer);
     }
 
-    return {createForecastElementF, createThreeDayElementF, showError}
+    function showLoader() {
+        loader.display = 'inline-block';
+    }
+
+    function hideLoader() {
+        loader.display = 'none'
+    }
+
+    return {createForecastElementF, createThreeDayElementF, showError, showLoader, hideLoader}
 })();
 
 export { dom }
