@@ -67,3 +67,9 @@ fBtn.addEventListener('click', () => {
 cBtn.addEventListener('click', () => {
     selectC();
 })
+
+searchBar.addEventListener('keydown', e => {
+    if(e.code === 'Enter') {
+        getForecast();
+    }
+})
