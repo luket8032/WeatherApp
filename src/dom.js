@@ -5,8 +5,6 @@ const dom = (() => {
     const loader = document.getElementById('loader');
 
     function createForecastElementF(data) {
-        container.innerHTML = ''
-    
         const forecastContainer = document.createElement('div');
         const tempContainer = document.createElement('div');
         const conditionContainer = document.createElement('div');
@@ -121,8 +119,6 @@ const dom = (() => {
     }
 
     function createForecastElementC(data) {
-        container.innerHTML = ''
-    
         const forecastContainer = document.createElement('div');
         const tempContainer = document.createElement('div');
         const conditionContainer = document.createElement('div');
@@ -238,7 +234,6 @@ const dom = (() => {
 
     
     function showError(error) {
-        container.innerHTML = '';
         console.log(error)
     
         const errorContainer = document.createElement('div');
@@ -252,14 +247,15 @@ const dom = (() => {
     
         errorContainer.append(errorNotif, errorMsg);
         container.append(errorContainer);
+        hideLoader();
     }
 
     function showLoader() {
-        loader.display = 'inline-block';
+        loader.style.display = 'inline-block';
     }
 
     function hideLoader() {
-        loader.display = 'none'
+        loader.style.display = 'none';
     }
 
     return {

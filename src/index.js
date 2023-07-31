@@ -2,6 +2,7 @@ import "./style.css";
 import { dom } from "./dom";
 
 const btn = document.querySelector('button');
+const container = document.getElementById('container');
 const searchBar = document.getElementById('search');
 const fBtn = document.getElementById('switchF');
 const cBtn = document.getElementById('switchC');
@@ -14,18 +15,20 @@ async function getForecast() {
     try {
         switch(selectedMeasurement) {
             case 'F':
-                fResults(url);
+                await fResults(url);
                 break;
             case 'C':
-                cResults(url);
+                await cResults(url);
                 break;
         }
     } catch (error) {
+        container.innerHTML = '';
         dom.showError(error);
     }
 }
 
 async function fResults(url) {
+    container.innerHTML = '';
     dom.showLoader();
     const forecast = await fetch(url, {mode:'cors'});
     const forecastData = await forecast.json();
@@ -35,6 +38,7 @@ async function fResults(url) {
 }
 
 async function cResults(url) {
+    container.innerHTML = '';
     dom.showLoader();
     const forecast = await fetch(url, {mode:'cors'});
     const forecastData = await forecast.json();
