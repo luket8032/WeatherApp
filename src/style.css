@@ -197,3 +197,16 @@ body {
     display: flex;
     justify-content: space-between;
 }
+
+/* Switch Measurement Buttons */
+.switch {
+    transition: .2s;
+}
+
+.switch:active {
+    scale: 1.1;
+}
+
+#switchF {
+    border: white solid 2px;
+}
