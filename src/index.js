@@ -10,7 +10,7 @@ let selectedMeasurement = 'F';
 
 async function getForecast() {
     const searchParams = searchBar.value;
-    const url = `http://api.weatherapi.com/v1/forecast.json?key=e462c7619cbe421f908144015230606&q=${searchParams}&days=3`;
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=e462c7619cbe421f908144015230606&q=${searchParams}&days=3`;
 
     try {
         switch(selectedMeasurement) {
